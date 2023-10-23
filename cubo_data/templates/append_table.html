@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Selecione o arquivo que queira dar exportar para a tabela {{table_name}}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+    <a>
+        {% csrf_token %}
+        {{ form.file }}
+    </a>
+    <a>
+        <input type="submit" value="Enviar">
+    </a>
+    </form>
+
+    {% if row_count is not None %}
+    <p>Quantidade de registros exportados: {{ row_count }} linhas.</p>
+    <p>Total de registros de {{table_name}}: {{total_records}} </p>
+    <p>Tempo de processo: {{elapsed_time_formatted}}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>LOGIN</h1>
+    <form method='post'>
+        {% csrf_token %}
+        {% if error_message %}
+        <div class="error-message"> {{ error_message }}</div>
+        {% endif %}
+        <input type="text" id="username" name="username" placeholder="Usuário">
+        <input type="password" id="password" name="password" placeholder="Senha">
+        <button class="neon" type="submit" >LOGIN</button>
+      </form>
+</body>
+</html>

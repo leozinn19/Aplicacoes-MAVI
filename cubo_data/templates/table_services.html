@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <a href="{% url 'save_table' database_name=database_name table_name=table_name %}">SALVAR {{table_name}} DE {{database_name}}</a>
+    </p>
+    <p>    
+        <a href="{% url 'append_table' database_name=database_name table_name=table_name %}">EXPORTAR {{table_name}} PARA O BANCO {{database_name}}</a>
+    </p>
+</body>
+</html>
