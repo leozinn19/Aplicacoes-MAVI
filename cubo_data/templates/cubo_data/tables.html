@@ -1,0 +1,19 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{database_name}}</h1>
+    <ul>
+        {%for table in tables%}
+        <p>
+            <a href="{% url 'table_service' database_name=database_name table_name=table.0%}">{{table.0}}</a>
+        </p>
+        {%endfor%}
+    </ul>
+</body>
+</html>

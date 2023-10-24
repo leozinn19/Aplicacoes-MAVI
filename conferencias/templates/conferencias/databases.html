@@ -6,13 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{database_name}}</h1>
+    <h1>BANCOS DISPONIVES:</h1>
     <ul>
-        {%for table in tables%}
+        {% for database in databases %}
         <p>
-            <a href="{% url 'table_service' database_name=database_name table_name=table.0%}">{{table.0}}</a>
+            <a href="{% url 'conferencias:varejistas' database.0 %}">{{ database.0 }}</a>
         </p>
-        {%endfor%}
+        {% endfor %}
     </ul>
 </body>
 </html>

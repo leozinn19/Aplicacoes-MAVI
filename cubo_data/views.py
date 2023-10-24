@@ -10,7 +10,7 @@ import io
 import pandas as pd
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'cubo_data/index.html')
 
 def login(request):
     if request.method == 'POST':
@@ -26,16 +26,16 @@ def login(request):
         except Exception as e:
                 error_message = f"Erro ao conectar ao banco de dados: {e}"
 
-        return render(request, 'login.html', {'error_message': error_message})
+        return render(request, 'cubo_data/login.html', {'error_message': error_message})
     else:
-        return render(request, 'login.html')
+        return render(request, 'cubo_data/login.html')
 
 def list_databases(request):
     with connection.cursor() as cursor:
         cursor.execute("SHOW DATABASES")
         databases= cursor.fetchall()
     
-    return render(request, 'databases.html', {'databases': databases})
+    return render(request, 'cubo_data/databases.html', {'databases': databases})
 
 def list_tables(request, database_name):
     with connection.cursor() as cursor:
@@ -43,10 +43,10 @@ def list_tables(request, database_name):
         cursor.execute('SHOW TABLES')
         tables = cursor.fetchall()
     
-    return render(request, 'tables.html', {'database_name': database_name, 'tables': tables})
+    return render(request, 'cubo_data/tables.html', {'database_name': database_name, 'tables': tables})
 
 def table_services(request, database_name, table_name):
-    return render(request, 'table_services.html', {'database_name': database_name, 'table_name' : table_name}) 
+    return render(request, 'cubo_data/table_services.html', {'database_name': database_name, 'table_name' : table_name}) 
 
 def save_table(request, database_name, table_name):
     with connection.cursor() as cursor:
@@ -73,5 +73,5 @@ def append_table(request, database_name, table_name):
         auto_increment = get_auto_increment_columns(table_name, database_name)
         row_count, total_records, elapsed_time_formatted = append_data(table_name, database_name, file, auto_increment)
 
-    return render(request, 'append_table.html', {'form': form, 'table_name': table_name, 'db_name': database_name, 'row_count' : row_count,
+    return render(request, 'cubo_data/append_table.html', {'form': form, 'table_name': table_name, 'db_name': database_name, 'row_count' : row_count,
                                                   "total_records": total_records, 'elapsed_time_formatted': elapsed_time_formatted})
