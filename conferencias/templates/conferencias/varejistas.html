@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    table {
+    border-collapse: collapse;
+    width: 50%; /* Defina o tamanho desejado */
+    margin: 0 auto; /* Centraliza a tabela */
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center; /* Centraliza o texto nas células */
+    text-transform: uppercase;
+}
+
+th {
+    background-color: #f2f2f2; /* Cor de fundo para as células de cabeçalho */
+}
+h2{
+    margin-left: 25%;
+    margin-top: 5%;
+}
+body{
+    font-family: A;
+}
+
+</style>
 <body>
-    {{ tabelas_html|safe }}
+    {% for varejista, data in data.items %}
+    <h2>{{ varejista }}:</h2>
+    <table border="1">
+        <tr>
+            <th>Mês</th>
+            {% for ano in data.columns %}
+                <th>{{ ano }}</th>
+            {% endfor %}
+        </tr>
+        {% for mes, valores in data.iterrows %}
+            <tr>
+                <td>{{ mes }}</td>
+                {% for valor in valores %}
+                    <td>{{ valor }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    {% endfor %}
 </body>
 </html>

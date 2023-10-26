@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.conf import settings
 from django.db import connection
 
-from conferencias.services.ref_varejista import soma_valores, gerar_tabelas_html
+from conferencias.services.ref_varejista import soma_valores
 
 def login_c(request):
     if request.method == 'POST':
@@ -31,5 +31,5 @@ def list_databases(request):
 
 def varejistas(request, database_name):
     resultado = soma_valores(database_name)
-    tabelas_html = gerar_tabelas_html(resultado)
-    return render(request, 'conferencias/varejistas.html', {'tabelas_html': tabelas_html})
+    varejistas = resultado.keys()
+    return render(request, 'conferencias/varejistas.html', {'data': resultado, 'varejistas': varejistas})

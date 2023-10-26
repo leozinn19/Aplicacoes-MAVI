@@ -5,13 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+body{
+    text-align: center;
+    margin-top: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+    font-size: 45px;
+}
+div {
+    margin-top: 5%;
+}
+a {
+
+text-decoration: none;
+}
+li {
+border: 1px solid black;
+padding: 10px;
+margin: 10px 400px;
+border-radius: 10px;
+transition: background-color 0.3s;
+text-transform: uppercase;
+font-weight: bold;
+color: rgb(43, 62, 228); /* Definindo a cor do texto */
+background-color: rgb(243, 237, 237);
+list-style-type: none;
+}
+
+li:hover {
+    background-color: #535151; /* Alterando a cor de fundo no hover */
+    color: rgb(255, 255, 255);
+}
+</style>
 <body>
     <H1>MAVI APP</H1>
+    <div>
     <p>
-        <a href="{% url 'login' %}">CUBO DATA</a>
+        <a href="{% url 'login' %}"><li>CUBO DATA</li></a>
     </p>
     <p>
-        <a href="{% url 'conferencias:login_c' %}">CONFÊRENCIAS</a>
+        <a href="{% url 'conferencias:login_c' %}"><li>CONFÊRENCIAS</li></a>
     </p>
+    </div>
 </body>
 </html>

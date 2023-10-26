@@ -6,12 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    a {
+    
+        text-decoration: none;
+    }
+    li {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 10px 400px;
+        border-radius: 10px;
+        transition: background-color 0.3s;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: rgb(43, 62, 228); /* Definindo a cor do texto */
+        background-color: rgb(243, 237, 237);
+    }
+    
+    li:hover {
+            background-color: #535151; /* Alterando a cor de fundo no hover */
+            color: rgb(255, 255, 255);
+        }
+    </style>
 <body>
     <h1>{{database_name}}</h1>
     <ul>
         {%for table in tables%}
         <p>
-            <a href="{% url 'table_service' database_name=database_name table_name=table.0%}">{{table.0}}</a>
+            <a href="{% url 'table_service' database_name=database_name table_name=table.0%}"><li>{{table.0}}</li></a>
         </p>
         {%endfor%}
     </ul>

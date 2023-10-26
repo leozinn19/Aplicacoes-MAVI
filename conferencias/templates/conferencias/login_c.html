@@ -5,16 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+body {
+    text-align: center;
+    margin-top: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    border: 5px solid rgb(121, 119, 119);
+    margin: 5px 500px;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: rgb(243, 237, 237);
+}
+input {
+    width: 100%;
+    height: 25px;
+}
+
+
+button {
+    width: 50%; 
+    padding: 10px; 
+    cursor: pointer; 
+    border-radius: 15px;
+    background-color: rgb(230, 229, 229);
+    margin-right: 80%;
+}
+
+button:hover {
+    transform: scale(1.1); 
+    background-color: rgb(194, 194, 194);
+}
+
+</style>
 <body>
-    <h1>LOGIN</h1>
+    
     <form method='post'>
         {% csrf_token %}
         {% if error_message %}
         <div class="error-message"> {{ error_message }}</div>
         {% endif %}
+        <div class="container">
+            <h1>LOGIN</h1>
+            <h2>Conferências</h2>
+        </p>
         <input type="text" id="username" name="username" placeholder="Usuário">
+        </p>
+        <p>
         <input type="password" id="password" name="password" placeholder="Senha">
-        <button class="neon" type="submit" >LOGIN</button>
+        </p>
+        <button type="submit" >LOGIN</button>
+        </div>
       </form>
+
 </body>
 </html>
